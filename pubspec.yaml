@@ -1,5 +1,5 @@
 name: kenya_plate
-description: "Kenya's licence plates for the plate_core library — three letters, three digits and a letter on one row or stacked, in black on white or yellow, white on green or red, and blue on white, with an advisory validator."
+description: "Kenya's licence plates for plate_core: three letters, three digits and a letter on one row or stacked, in black on white or yellow, white on green or red, and more."
 version: 0.1.0
 repository: https://github.com/ArAd1Beyranvand/kenya_plate
 resolution: workspace
