@@ -34,13 +34,25 @@ void main() {
         'county': (KenyaPlates.row, KenyaThemes.county, 'CGX001V', wide),
         'electric': (KenyaPlates.row, KenyaThemes.electric, 'EVA001A', wide),
         'square': (KenyaPlates.square, KenyaThemes.yellow, 'KDK102A', boxy),
-        'square_electric': (KenyaPlates.square, KenyaThemes.electric, 'EMA001A', boxy),
-        'diplomatic': (KenyaPlates.diplomatic, KenyaThemes.diplomatic, '1 CD 1 AK', wide),
+        'square_electric': (
+          KenyaPlates.square,
+          KenyaThemes.electric,
+          'EMA001A',
+          boxy,
+        ),
+        'diplomatic': (
+          KenyaPlates.diplomatic,
+          KenyaThemes.diplomatic,
+          '1 CD 1 AK',
+          wide,
+        ),
       };
 
-  for (final MapEntry<String, (PlateSpec, PlateTheme, String, Size)> c in cases.entries) {
+  for (final MapEntry<String, (PlateSpec, PlateTheme, String, Size)> c
+      in cases.entries) {
     testWidgets(c.key, (tester) async {
-      final (PlateSpec spec, PlateTheme theme, String text, Size size) = c.value;
+      final (PlateSpec spec, PlateTheme theme, String text, Size size) =
+          c.value;
       final PlateController controller = PlateController.fromValues(
         spec,
         text.contains(' ') ? text.split(' ') : text.split(''),
@@ -66,7 +78,10 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      await expectLater(find.byType(PlateView), matchesGoldenFile('goldens/ke_${c.key}.png'));
+      await expectLater(
+        find.byType(PlateView),
+        matchesGoldenFile('goldens/ke_${c.key}.png'),
+      );
       await tester.pumpWidget(const SizedBox.shrink());
       controller.dispose();
     });
@@ -77,9 +92,14 @@ void main() {
     final List<String?> israel = <String?>['24', 'CD', '1', 'AK'];
     expect(spec.restrictions, contains(KenyaMissions.restriction));
     expect(spec.restrictionViolatedBy(israel)?.reason, KenyaMissions.notFound);
-    expect(() => spec.checkRestrictions(israel), throwsA(isA<PlateRestrictionException>()));
     expect(
-      const KenyaDiplomaticValidator().validate(PlateEntry(spec: spec, values: israel)).reason,
+      () => spec.checkRestrictions(israel),
+      throwsA(isA<PlateRestrictionException>()),
+    );
+    expect(
+      const KenyaDiplomaticValidator()
+          .validate(PlateEntry(spec: spec, values: israel))
+          .reason,
       KenyaMissions.notFound,
     );
     expect(spec.restrictionViolatedBy(<String?>['1', 'CD', '1', 'AK']), isNull);

@@ -119,14 +119,23 @@ abstract final class KenyaPlates {
   static List<PlateSpec> get all => <PlateSpec>[row, square, diplomatic];
 
   /// A variable-length run printed at the diplomatic pitch.
-  static PlateSlot _run(PlateAlphabet alphabet, int length, double left, {int? minLength}) =>
-      PlateSlot(
-        alphabet: alphabet,
-        box: PlateBox(left, _Layout.dipTop, length * _Layout.dipPitch, _Layout.dipBox),
-        length: length,
-        minLength: minLength,
-        spacing: _Layout.dipPitch - 0.6 * 0.72 * _Layout.dipBox,
-      );
+  static PlateSlot _run(
+    PlateAlphabet alphabet,
+    int length,
+    double left, {
+    int? minLength,
+  }) => PlateSlot(
+    alphabet: alphabet,
+    box: PlateBox(
+      left,
+      _Layout.dipTop,
+      length * _Layout.dipPitch,
+      _Layout.dipBox,
+    ),
+    length: length,
+    minLength: minLength,
+    spacing: _Layout.dipPitch - 0.6 * 0.72 * _Layout.dipBox,
+  );
 
   /// Three letters, three digits, then a suffix letter at the digits' pitch.
   static List<PlateSlot> _registerSlots({
@@ -139,9 +148,30 @@ abstract final class KenyaPlates {
     required double digitsTop,
     required double suffixLeft,
   }) => <PlateSlot>[
-    ..._across(KenyaAlphabets.letters, 3, lettersLeft, lettersPitch, lettersTop, box),
-    ..._across(KenyaAlphabets.digits, 3, digitsLeft, digitsPitch, digitsTop, box),
-    ..._across(KenyaAlphabets.letters, 1, suffixLeft, digitsPitch, digitsTop, box),
+    ..._across(
+      KenyaAlphabets.letters,
+      3,
+      lettersLeft,
+      lettersPitch,
+      lettersTop,
+      box,
+    ),
+    ..._across(
+      KenyaAlphabets.digits,
+      3,
+      digitsLeft,
+      digitsPitch,
+      digitsTop,
+      box,
+    ),
+    ..._across(
+      KenyaAlphabets.letters,
+      1,
+      suffixLeft,
+      digitsPitch,
+      digitsTop,
+      box,
+    ),
   ];
 
   static List<PlateSlot> _across(
