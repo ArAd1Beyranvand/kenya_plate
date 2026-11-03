@@ -51,7 +51,6 @@ abstract final class KenyaCountry {
 
   static const PlateCountry kenya = PlateCountry(
     code: 'ke',
-    captionLines: <String>[],
     panelColor: KenyaColors.white,
     panelTextColor: KenyaColors.black,
     flagAspectRatio: 3 / 2,

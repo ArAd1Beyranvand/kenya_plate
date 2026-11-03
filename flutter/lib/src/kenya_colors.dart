@@ -29,6 +29,4 @@ abstract final class KenyaColors {
   static const Color flagRed = Color(0xFFBB0000);
   static const Color flagGreen = Color(0xFF006600);
   static const Color flagWhite = Color(0xFFFFFFFF);
-
-  static const Color inactive = Color(0xFFB0B0B0);
 }

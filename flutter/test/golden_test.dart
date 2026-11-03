@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kenya_plate/kenya_plate.dart';
 import 'package:plate_core/plate_core.dart';
+import 'package:plate_core/testing.dart';
 
 /// One golden per category, drawn with a real bold face so the ink can be
 /// measured against the flattened references.
@@ -57,33 +57,14 @@ void main() {
         spec,
         text.contains(' ') ? text.split(' ') : text.split(''),
       );
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: SizedBox(
-                width: size.width,
-                height: size.height,
-                child: PlateThemeScope(
-                  theme: theme,
-                  child: PlateView(
-                    controller: controller,
-                    theme: theme,
-                    country: KenyaCountry.kenya,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
+      await pumpPlateGolden(
+        tester,
+        controller,
+        'goldens/ke_${c.key}.png',
+        theme: theme,
+        country: KenyaCountry.kenya,
+        stage: Size(size.width, size.height),
       );
-      await tester.pumpAndSettle();
-      await expectLater(
-        find.byType(PlateView),
-        matchesGoldenFile('goldens/ke_${c.key}.png'),
-      );
-      await tester.pumpWidget(const SizedBox.shrink());
-      controller.dispose();
     });
   }
 

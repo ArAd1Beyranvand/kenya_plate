@@ -27,15 +27,12 @@ import 'kenya_missions.dart';
 /// 40-unit pitch fitted to the article's `1CD1AK` format.
 abstract final class _Layout {
   static const double rowWidth = 520, rowHeight = 110;
-  static const double rowBox = 104, rowTop = 4.6;
-  static const double rowPitch = 55.3;
-  static const double rowLettersLeft = 72.1;
-  static const double rowDigitsLeft = 271.85;
+  static const double rowBox = 104, rowTop = 4.6, rowPitch = 55.3;
+  static const double rowLettersLeft = 72.1, rowDigitsLeft = 271.85;
   static const double rowSuffixLeft = 438.75;
   static const PlateBox rowFlag = PlateBox(5, 9, 42, 28);
 
-  static const double squareWidth = 250, squareHeight = 200;
-  static const double squareBox = 96;
+  static const double squareWidth = 250, squareHeight = 200, squareBox = 96;
   static const double squareLettersTop = 1, squareDigitsTop = 102.5;
   static const double squareLettersLeft = 57.5, squareLettersPitch = 57;
   static const double squareDigitsLeft = 11, squareDigitsPitch = 54;
@@ -55,8 +52,6 @@ abstract final class _Layout {
 /// Not implemented: the 1920–2007 formats, the 2026 `KE` series (announced, no
 /// reference), motorcycle `KMCA`, `GK` government and the NGO plate.
 abstract final class KenyaPlates {
-  static const PlatePanel _hiddenPanel = PlatePanel(box: PlateBox(0, 0, 0, 0));
-
   static final PlateSpec row = _spec(
     'ke.row',
     _Layout.rowWidth,
@@ -96,8 +91,6 @@ abstract final class KenyaPlates {
     country: KenyaCountry.kenya,
     canvasWidth: _Layout.rowWidth,
     canvasHeight: _Layout.rowHeight,
-    panel: _hiddenPanel,
-    noPanel: true,
     slots: <PlateSlot>[
       _run(KenyaAlphabets.digits, 3, 50, minLength: 1),
       PlateSlot(
@@ -201,8 +194,6 @@ abstract final class KenyaPlates {
     country: KenyaCountry.kenya,
     canvasWidth: width,
     canvasHeight: height,
-    panel: _hiddenPanel,
-    noPanel: true,
     decals: <PlateDecal>[PlateDecal(drawing: KenyaCountry.flag, box: flag)],
     slots: slots,
     textGroups: const <PlateTextGroup>[

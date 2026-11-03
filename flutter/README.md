@@ -6,13 +6,24 @@ GO VEGAN 🌱
 
 From the mighty people of Iran to the vibrant people of Kenya to view examples:
 
-https://platexample.ir/#/discover/kenya
+https://platexample.ir/#/discover/kenya:flutter
 
 # kenya_plate
 
-Kenya's licence plates for the `plate_core` library. Three letters, three digits and a letter on one row or stacked, in black on white or yellow, white on green or red, and blue on white, with an advisory validator.
+Kenya's licence plates for plate_core: three letters, three digits and a letter on one row or stacked, in black on white or yellow, white on green or red, and more.
 
-## Install
+## Languages
+
+| Language | Folder | Example |
+| --- | --- | --- |
+| Flutter / Dart | [`flutter/`](https://github.com/ArAd1Beyranvand/kenya_plate/tree/main/flutter) | [platexample](https://platexample.ir/#/discover/kenya:flutter) |
+| Kotlin | [`kotlin/`](https://github.com/ArAd1Beyranvand/kenya_plate/tree/main/kotlin) | [platexample](https://platexample.ir/#/discover/kenya:kotlin) |
+| Python | [`python/`](https://github.com/ArAd1Beyranvand/kenya_plate/tree/main/python) | [platexample](https://platexample.ir/#/discover/kenya:python) |
+| TypeScript | [`typescript/`](https://github.com/ArAd1Beyranvand/kenya_plate/tree/main/typescript) | [platexample](https://platexample.ir/#/discover/kenya:typescript) |
+
+## Quick start
+
+### Install
 
 ```yaml
 dependencies:
@@ -20,7 +31,7 @@ dependencies:
   kenya_plate: ^0.1.0
 ```
 
-## Use
+### Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -35,13 +46,30 @@ PlateCanvas(
 );
 ```
 
-## Contains
+## Specs
 
-- `KenyaCountry` — country panel: `kenya`.
-- `KenyaPlates` — 3 plate specs: `row`, `square`, `diplomatic`.
-- `KenyaThemes` — 5 themes: `white`, `yellow`, `electric`, `county`, `diplomatic`.
-- `KenyaValidator` — advisory validator; flags the frame, never blocks a keystroke.
-- `KenyaDiplomaticValidator` — advisory validator; flags the frame, never blocks a keystroke.
+Each spec is one plate layout.
+
+- `KenyaPlates.row`
+- `KenyaPlates.square`
+- `KenyaPlates.diplomatic` — id `ke.diplomatic`
+
+## Themes
+
+- `KenyaThemes.white`
+- `KenyaThemes.yellow`
+- `KenyaThemes.electric`
+- `KenyaThemes.county`
+- `KenyaThemes.diplomatic`
+
+## Change it
+
+`PlateCanvas` takes `spec:` (an entry of `KenyaPlates`) and `theme:` (an entry of `KenyaThemes`). Set `validator:` to `KenyaValidator()` and `autoValidate: true` to show validation hints.
+
+## Also included
+
+- `KenyaCountry` — the country panel.
+- `KenyaValidator` — the plate validator.
 - `KenyaMissions` — code table.
 
 ## Plates
@@ -61,3 +89,6 @@ reference), motorcycle `KMCA`, `GK` government and the NGO plate.
 
 Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
 
+## License
+
+See [LICENSE](https://github.com/ArAd1Beyranvand/kenya_plate/blob/main/LICENSE).

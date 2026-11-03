@@ -5,9 +5,6 @@
 /// validator.
 library;
 
-// TODO(py): [D5] one module `plates.countries.kenya`; assets via importlib.resources.
-// TODO(ts): [D5] one subpath export `./countries/kenya`; tree-shakable.
-// TODO(kt): [D5] package `countries.kenya` in the countries module.
 export 'package:plate_alphabet/plate_alphabet.dart' show KenyaAlphabets;
 
 export 'src/kenya_colors.dart';

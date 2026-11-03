@@ -27,7 +27,6 @@ abstract final class KenyaThemes {
 PlateTheme _ink(Color field, Color ink) => PlateTheme.monochrome(
   field: field,
   ink: ink,
-  inactive: KenyaColors.inactive,
   borderWidthRatio: 0.025,
   plateRadiusRatio: 0.05,
 );
